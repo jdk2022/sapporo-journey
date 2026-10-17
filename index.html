@@ -7,127 +7,139 @@
 <title>北海道 · 冬日行程</title>
 <style>
 :root {
-  --ink:#16233a; --ink-2:#4a5870; --ink-3:#8492a8; --line:#e3e9f2;
-  --bg:#f3f6fb; --card:#fff; --navy:#16325c; --ice:#e8f0fb; --blue:#2f6fdb;
-  --red:#d9473f; --amber:#b7791f; --amber-bg:#fff8eb; --green:#2f855a; --green-bg:#effaf3;
-  --r:18px; --shadow:0 1px 2px rgba(22,35,58,.04),0 8px 24px rgba(22,35,58,.06);
+  --ink:#284556; --ink-2:#536e7d; --ink-3:#6f8794; --line:#dce8ed;
+  --bg:#f3f8fa; --card:#fff; --navy:#356478; --ice:#eaf3f7; --blue:#447f99;
+  --red:#b77566; --amber:#9b753d; --amber-bg:#fcf7ed; --green:#557d68; --green-bg:#f0f7f2;
+  --r:22px; --shadow:0 4px 24px rgba(67,101,119,.055),0 1px 2px rgba(67,101,119,.03);
+  --nav-height:86px;
 }
 * { box-sizing:border-box; }
-html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
-body { margin:0; background:var(--bg); color:var(--ink);
-  font:15.5px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; }
-a { color:var(--blue); text-decoration:none; }
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; overflow-x:clip; }
+body { margin:0; overflow-x:clip; background:var(--bg); color:var(--ink);
+  font:15.5px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background-image:radial-gradient(ellipse at 0 700px,#e8f1f6 0,transparent 620px),radial-gradient(ellipse at 100% 1800px,#edf3ed 0,transparent 650px); }
+a { color:var(--blue); text-decoration:none; -webkit-tap-highlight-color:transparent; }
+a:focus-visible,button:focus-visible { outline:2px solid var(--blue); outline-offset:4px; }
 
-/* hero */
-.hero { position:relative; overflow:hidden; color:#fff; padding:64px 22px 100px;
-  background:linear-gradient(160deg,#0e2140 0%,#1d4479 55%,#4f7fb8 100%); }
-.hero::before { content:""; position:absolute; inset:0; opacity:.55;
-  background-image:radial-gradient(2px 2px at 20px 30px,#fff,transparent),radial-gradient(1.5px 1.5px at 90px 80px,#fff,transparent),
-  radial-gradient(1px 1px at 150px 20px,#fff,transparent),radial-gradient(2px 2px at 200px 120px,#fff,transparent),
-  radial-gradient(1px 1px at 60px 150px,#fff,transparent);
-  background-size:240px 180px; animation:snow 18s linear infinite; }
-@keyframes snow { to { background-position:60px 540px; } }
-@media (prefers-reduced-motion:reduce) { .hero::before { animation:none; } }
-.hero svg { position:absolute; left:0; right:0; bottom:-1px; width:100%; height:90px; }
-.hero-inner { position:relative; max-width:860px; margin:0 auto; }
-.eyebrow { display:inline-block; font-size:12px; letter-spacing:.2em; padding:4px 12px; border:1px solid rgba(255,255,255,.35);
-  border-radius:999px; background:rgba(255,255,255,.08); }
-.hero h1 { margin:16px 0 6px; font-size:clamp(30px,7vw,46px); line-height:1.2; letter-spacing:.04em; font-weight:700; }
-.hero p { margin:0; color:rgba(255,255,255,.82); font-size:16px; }
-.stats { display:flex; gap:10px; flex-wrap:wrap; margin-top:22px; }
-.stats span { padding:6px 14px; border-radius:12px; background:rgba(255,255,255,.12); backdrop-filter:blur(6px); font-size:14px; }
-.stats b { font-size:18px; margin-right:4px; }
+/* 雪原明信片：全部内嵌，不依赖外部图片 */
+.hero { position:relative; isolation:isolate; overflow:hidden; padding:68px 24px 110px;
+  min-height:430px; color:var(--ink); background:linear-gradient(160deg,#e2eef5 0%,#f1f7fa 52%,#fcf7f0 100%); }
+.hero::before { content:""; position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.8;
+  background-image:radial-gradient(2px 2px at 20px 30px,#fff,transparent),radial-gradient(2px 2px at 90px 80px,#fff,transparent),
+    radial-gradient(1.5px 1.5px at 150px 20px,#fff,transparent),radial-gradient(3px 3px at 200px 120px,#fff,transparent);
+  background-size:240px 180px; animation:snow 26s linear infinite; }
+@keyframes snow { to { background-position:45px 540px; } }
+.hero-inner { position:relative; z-index:3; max-width:900px; margin:0 auto; }
+.eyebrow { font-size:11px; letter-spacing:.3em; color:#658594; display:inline-flex; gap:12px; align-items:center; }
+.eyebrow::before { content:""; height:1px; width:28px; background:#90afbd; }
+.hero h1 { margin:19px 0 12px; font:600 clamp(32px,4.8vw,52px)/1.28 "Songti SC","STSong","Noto Serif CJK SC",serif; letter-spacing:.065em; }
+.hero p { margin:0; color:var(--ink-2); font-size:14px; letter-spacing:.06em; }
+.hero .winter-note { margin-top:16px; color:#738b97; font-size:13px; letter-spacing:.12em; }
+.stats { display:flex; gap:10px; flex-wrap:wrap; margin-top:24px; }
+.stats span { padding:5px 13px; border-radius:8px; border:1px solid #fff; background:rgba(255,255,255,.64); font-size:12px; color:var(--ink-2); }
+.stats b { font-size:16px; font-weight:500; margin-right:5px; color:var(--navy); }
+.hero .winter-scene { position:absolute; z-index:1; width:min(72%,850px); height:360px; bottom:-1px; right:-20px; pointer-events:none; }
+.hero::after { content:""; position:absolute; z-index:2; bottom:0; left:0; right:0; height:48px; pointer-events:none; background:linear-gradient(transparent,var(--bg)); }
 
-/* nav */
-nav { position:sticky; top:0; z-index:20; background:rgba(243,246,251,.86); backdrop-filter:saturate(1.6) blur(12px);
-  -webkit-backdrop-filter:saturate(1.6) blur(12px); border-bottom:1px solid var(--line); }
-nav .in { max-width:860px; margin:0 auto; display:flex; gap:8px; overflow-x:auto; padding:10px 16px; scrollbar-width:none; }
-nav .in::-webkit-scrollbar { display:none; }
-nav a { flex:none; padding:6px 14px; border-radius:999px; color:var(--ink-2); font-size:14px; background:#fff; border:1px solid var(--line); transition:.2s; }
-nav a b { font-weight:600; margin-right:4px; color:var(--ink); }
-nav a.on { background:var(--navy); color:#fff; border-color:var(--navy); }
-nav a.on b { color:#fff; }
+/* 固定网格导航，不横滑，不显示横向进度条 */
+nav { position:sticky; top:0; z-index:20; background:rgba(247,251,252,.94);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--line); }
+nav .in { max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:7px; padding:10px 18px; }
+nav a { min-width:0; min-height:54px; padding:6px 5px; border-radius:10px; color:var(--ink-2); font-size:12px;
+  text-align:center; display:flex; flex-direction:column; justify-content:center; line-height:1.5; border:1px solid transparent; transition:background .2s,color .2s; }
+nav a b { display:block; font-size:13px; font-weight:600; color:var(--ink); font-variant-numeric:tabular-nums; }
+nav a.on { background:#e3eff4; border-color:#d2e3ea; color:var(--navy); }
+nav a.on b { color:var(--navy); }
+main { max-width:900px; margin:30px auto 0; padding:0 18px 48px; }
 
-main { max-width:860px; margin:22px auto 0; padding:0 14px 60px; }
+.overview { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-bottom:32px; }
+.overview a { min-width:0; position:relative; overflow:hidden; background:rgba(255,255,255,.83); border:1px solid #e5eef2;
+  border-radius:14px; padding:15px 17px; box-shadow:var(--shadow); color:var(--ink); }
+.overview a::after { content:""; position:absolute; right:-15px; bottom:-22px; width:80px; height:42px; border-radius:50%; background:#eef5f8; pointer-events:none; }
+.overview small { position:relative; z-index:1; display:block; color:var(--ink-3); font-size:10px; letter-spacing:.1em; }
+.overview strong { position:relative; z-index:1; display:block; font-size:15px; margin-top:4px; line-height:1.5; overflow-wrap:anywhere; }
 
-/* 概览 */
-.overview { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:10px; margin-bottom:22px; }
-.overview a { background:var(--card); border-radius:14px; padding:12px 14px; box-shadow:var(--shadow); color:var(--ink); transition:transform .2s; }
-.overview a:hover { transform:translateY(-2px); }
-.overview small { display:block; color:var(--ink-3); font-size:12px; letter-spacing:.05em; }
-.overview strong { display:block; font-size:15px; margin-top:2px; line-height:1.4; }
-
-/* 每天 */
-.day { background:var(--card); border-radius:var(--r); box-shadow:var(--shadow); margin:0 0 22px; overflow:hidden; scroll-margin-top:64px; }
-.day-head { display:flex; align-items:center; gap:16px; padding:20px 22px; background:linear-gradient(135deg,var(--ice),#fff 70%); border-bottom:1px solid var(--line); }
-.day-no { flex:none; width:58px; height:58px; border-radius:16px; background:var(--navy); color:#fff; display:flex; flex-direction:column;
-  align-items:center; justify-content:center; font-size:24px; font-weight:700; line-height:1; }
-.day-no small { font-size:10px; letter-spacing:.15em; font-weight:500; opacity:.75; margin-bottom:3px; }
-.day-date { color:var(--ink-3); font-size:13px; letter-spacing:.04em; }
-.day-title { margin:2px 0 0; font-size:22px; line-height:1.35; }
-.day-body { padding:6px 22px 22px; }
+.day { background:var(--card); border:1px solid #e3edf1; border-radius:var(--r); box-shadow:var(--shadow); margin:0 0 28px;
+  overflow:hidden; scroll-margin-top:calc(var(--nav-height) + 12px); }
+.day-head { display:flex; align-items:center; gap:17px; position:relative; padding:24px 26px;
+  background:linear-gradient(115deg,#edf5f8,#fafcfd 80%); border-bottom:1px solid var(--line); }
+.day-head::after { content:""; position:absolute; right:24px; width:46px; height:46px; border-radius:50%; border:1px solid #d7e6ec; opacity:.75; pointer-events:none; }
+.day-no { flex:none; width:56px; height:60px; border-radius:16px; background:#fdfefe; border:1px solid #d5e5ec; color:var(--navy);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; font:500 26px/1 "Georgia",serif; }
+.day-no small { font:500 9px/1.3 -apple-system,sans-serif; letter-spacing:.2em; color:#8198a4; margin-bottom:5px; }
+.day-meta { min-width:0; position:relative; z-index:1; }
+.day-date { color:var(--ink-3); font-size:11px; letter-spacing:.06em; }
+.day-title { margin:4px 0 0; font:600 25px/1.4 "Songti SC","STSong",serif; overflow-wrap:anywhere; }
+.day-body { padding:8px 26px 24px; overflow-wrap:anywhere; }
 .day-body > p:first-child { margin-top:16px; }
-.day-body h2, .day-body h3 { position:relative; margin:26px 0 10px; padding-left:14px; font-size:17.5px; line-height:1.4; }
-.day-body h2::before, .day-body h3::before { content:""; position:absolute; left:0; top:.2em; bottom:.2em; width:4px; border-radius:4px; background:var(--red); }
-.day-body h2 { font-size:19px; }
-p { margin:10px 0; }
-ul { padding-left:1.2em; margin:8px 0; }
-li { margin:5px 0; }
+.day-body h2,.day-body h3 { position:relative; margin:28px 0 12px; padding-left:13px; font-size:17px; line-height:1.5; }
+.day-body h2::before,.day-body h3::before { content:""; position:absolute; left:0; top:.3em; bottom:.3em; width:3px; border-radius:3px; background:#92b5c4; }
+.day-body h2 { font-size:18px; }
+p { margin:12px 0; }
+ul { padding-left:1.2em; margin:9px 0; }
+li { margin:6px 0; }
 li > p { margin:0; }
 strong { color:var(--ink); font-weight:600; }
 em { color:var(--ink-2); }
-
-/* 路线 */
-.route { display:flex; flex-wrap:wrap; align-items:center; gap:6px 0; margin:6px 0; font-style:normal; }
-.route .stop { padding:3px 11px; background:var(--ice); color:var(--navy); border-radius:999px; font-size:13.5px; font-weight:600; white-space:nowrap; }
-.route .leg { display:inline-flex; align-items:center; color:var(--ink-3); font-size:12px; padding:0 4px; }
-.route .leg::after { content:"›"; font-size:16px; margin-left:2px; color:#b8c3d4; }
+.route { display:flex; flex-wrap:wrap; align-items:center; gap:7px 0; max-width:100%; margin:8px 0; font-style:normal; }
+.route .stop { min-width:0; max-width:100%; padding:4px 10px; border:1px solid #ddeaf0; background:#f1f7fa;
+  color:var(--navy); border-radius:8px; font-size:12px; font-weight:500; white-space:normal; overflow-wrap:anywhere; }
+.route .leg { flex-shrink:0; display:inline-flex; align-items:center; color:var(--ink-3); font-size:11px; padding:0 4px; }
+.route .leg::after { content:"›"; font-size:16px; margin-left:2px; color:#abc0ca; }
 .route .leg:empty::after { margin:0; }
-.route-card { margin:16px 0; padding:14px; border-radius:14px; background:#f7faff; border:1px dashed #c9d8ef; }
+.route-card { margin:18px 0; padding:14px; border-radius:14px; background:#f8fbfc; border:1px solid #e3edf1; }
 .route-card p { margin:0; }
-
-/* 图片 */
-a.shot { display:block; margin:12px 0; }
-a.shot img { display:block; width:100%; height:auto; border-radius:12px; border:1px solid var(--line); box-shadow:0 4px 14px rgba(22,35,58,.08); }
-
-/* 时间轴 */
-ul.timeline { list-style:none; padding:0; margin:14px 0; position:relative; }
-ul.timeline::before { content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:linear-gradient(var(--blue),#c9d8ef); border-radius:2px; }
-ul.timeline > li { position:relative; padding:0 0 12px 30px; margin:0; }
-ul.timeline > li.slot::before { content:""; position:absolute; left:1px; top:5px; width:14px; height:14px; border-radius:50%; background:#fff; border:3px solid var(--blue); }
-ul.timeline > li.note { color:var(--ink-2); font-size:14.5px; }
-ul.timeline > li.note > * { background:var(--bg); padding:8px 12px; border-radius:10px; display:block; }
-.time { display:inline-block; font-variant-numeric:tabular-nums; font-size:12.5px; font-weight:600; color:var(--blue);
-  background:#edf3fe; padding:1px 9px; border-radius:6px; margin-bottom:2px; }
-ul.timeline ul { color:var(--ink-2); font-size:14.5px; margin:4px 0 0; }
-
-/* 卡片块 */
-.block { margin:18px 0; padding:4px 16px 10px; border-radius:14px; background:var(--bg); }
-.block h4 { margin:12px 0 4px; font-size:15px; display:flex; align-items:center; gap:8px; }
-.block h4::before { content:"📌"; font-size:14px; }
-.block.info { background:#f2f7ff; } .block.info h4 { color:var(--navy); } .block.info h4::before { content:"🚃"; }
-.block.tips { background:var(--amber-bg); } .block.tips h4 { color:var(--amber); } .block.tips h4::before { content:"⚠️"; }
-.block.alt  { background:var(--green-bg); } .block.alt h4 { color:var(--green); } .block.alt h4::before { content:"🌲"; }
+a.shot { display:block; max-width:100%; margin:16px 0; }
+a.shot img { display:block; width:100%; height:auto; border-radius:12px; border:1px solid var(--line); box-shadow:0 3px 14px rgba(46,80,96,.05); }
+ul.timeline { list-style:none; padding:0; margin:18px 0; position:relative; }
+ul.timeline::before { content:""; position:absolute; left:6px; top:8px; bottom:8px; width:1px; background:#cfdee5; }
+ul.timeline > li { position:relative; padding:0 0 18px 28px; margin:0; }
+ul.timeline > li.slot::before { content:""; position:absolute; left:1px; top:7px; width:11px; height:11px; border-radius:50%; background:#fff; border:2px solid #7ba6b8; }
+ul.timeline > li.note { color:var(--ink-2); font-size:14px; }
+ul.timeline > li.note > * { background:#f5f9fa; padding:10px 12px; border-radius:9px; display:block; }
+.time { display:inline-block; font-variant-numeric:tabular-nums; font-size:12px; font-weight:600; color:var(--blue);
+  background:#eef5f8; padding:2px 9px; border-radius:6px; margin-bottom:4px; }
+ul.timeline ul { color:var(--ink-2); font-size:14px; margin:5px 0 0; }
+.block { margin:20px 0; padding:5px 16px 12px; border:1px solid #e7eef1; border-radius:14px; background:#f8fafb; }
+.block h4 { margin:12px 0 6px; font-size:15px; }
+.block.info { background:#f3f8fa; } .block.info h4 { color:var(--navy); }
+.block.tips { background:var(--amber-bg); border-color:#efe6d5; } .block.tips h4 { color:var(--amber); }
+.block.alt { background:var(--green-bg); border-color:#e0ebe3; } .block.alt h4 { color:var(--green); }
 .block ul { padding-left:1.1em; }
 .block ul.timeline { padding-left:0; }
-.block > p, .block li { font-size:14.5px; }
+.block > p,.block li { font-size:14px; }
 .block ul.timeline > li.note > * { background:#fff; }
-
-footer { text-align:center; color:var(--ink-3); font-size:13px; padding:10px 0 40px; }
-
-/* 看大图 */
-.lb { position:fixed; inset:0; z-index:50; background:rgba(10,18,32,.92); display:none; align-items:center; justify-content:center; padding:16px; }
+footer { text-align:center; color:var(--ink-3); font-size:12px; padding:18px 0 25px; letter-spacing:.08em; }
+.lb { position:fixed; inset:0; z-index:50; background:rgba(237,245,249,.97); display:none; align-items:center; justify-content:center; padding:16px; }
 .lb.on { display:flex; }
-.lb img { max-width:100%; max-height:100%; border-radius:8px; }
-
-@media (max-width:560px) {
-  .hero { padding:44px 18px 90px; }
-  .day-head { padding:16px; gap:12px; }
-  .day-no { width:50px; height:50px; font-size:21px; border-radius:14px; }
-  .day-title { font-size:19px; }
-  .day-body { padding:4px 16px 18px; }
-  main { padding:0 10px 48px; }
+.lb img { max-width:100%; max-height:calc(100dvh - 90px); border-radius:8px; object-fit:contain; }
+.lb-close { position:absolute; top:max(14px,env(safe-area-inset-top)); right:14px; border:1px solid #d2e2ea;
+  background:#fff; color:var(--navy); border-radius:50%; width:44px; height:44px; font-size:26px; cursor:pointer; }
+@media (hover:hover) { nav a:hover { background:#eaf3f7; } .overview a:hover { border-color:#b8d1dc; } }
+@media (max-width:640px) {
+  .hero { padding:40px 22px 220px; min-height:470px; }
+  .hero h1 { font-size:34px; margin-top:17px; }
+  .hero p { font-size:12px; }
+  .hero .winter-note { font-size:12px; margin-top:12px; }
+  .hero .winter-scene { width:100%; height:235px; right:0; bottom:-1px; }
+  .stats { margin-top:18px; }
+  nav .in { grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px 7px; padding:7px 12px; }
+  nav a { min-height:44px; font-size:11px; padding:4px; }
+  nav a b { font-size:12px; }
+  .overview { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; margin-bottom:22px; }
+  .overview a { padding:13px; }
+  .overview strong { font-size:14px; }
+  .day-head { padding:19px 17px; gap:12px; }
+  .day-head::after { right:16px; width:30px; height:30px; }
+  .day-no { width:46px; height:52px; font-size:24px; border-radius:12px; }
+  .day-title { font-size:21px; }
+  .day-body { padding:6px 17px 18px; font-size:15px; }
+  .day { margin-bottom:20px; border-radius:18px; }
+  main { margin-top:22px; padding:0 12px 28px; }
+  .block { padding:5px 12px 10px; }
 }
+@media (max-width:360px) { .hero h1 { font-size:30px; } .hero { padding-inline:18px; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .hero::before { animation:none; } }
 </style>
 </head>
 <body>
@@ -136,19 +148,57 @@ footer { text-align:center; color:var(--ink-3); font-size:13px; padding:10px 0 4
     <span class="eyebrow">HOKKAIDO · WINTER</span>
     <h1>北海道 · 冬日行程</h1>
     <p>札幌 · 小樽 · 美瑛 · 登别 · 洞爷湖</p>
+    <p class="winter-note">雪の北海道 / 在雪落的北国，慢慢走。</p>
     <div class="stats">
       <span><b>6</b>天</span>
       <span>12.31 – 1.05</span>
     </div>
   </div>
-  <svg viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
-    <path fill="rgba(255,255,255,.18)" d="M0 60 L180 18 L320 52 L470 6 L640 50 L820 14 L980 48 L1150 10 L1300 44 L1440 22 V90 H0Z"/>
-    <path fill="#f3f6fb" d="M0 70 L200 40 L360 66 L540 30 L720 64 L900 36 L1080 66 L1260 38 L1440 60 V90 H0Z"/>
+  <svg class="winter-scene" viewBox="0 0 900 420" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="snow-hill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#e9f2f6"/></linearGradient>
+      <radialGradient id="winter-sun"><stop stop-color="#f4ddbc" stop-opacity=".85"/><stop offset="1" stop-color="#f7e9d7" stop-opacity="0"/></radialGradient>
+      <g id="snow-pine">
+        <path fill="#91aeb6" d="M0 0 -13 22 -8 22 -21 42 -12 42 -28 66 28 66 12 42 21 42 8 22 13 22Z"/>
+        <path fill="#fff" d="M0 0 -12 20 -2 17 10 20Z M-8 24 -20 41 -7 36 2 38 16 36 8 24 0 27Z M-12 45 -26 64 -9 58 5 61 24 62 13 45 3 49Z"/>
+        <path stroke="#7f9da8" stroke-width="3" d="M0 66v13"/>
+      </g>
+      <g id="far-pine"><path fill="#c0d3db" d="M0 0 -13 26 -8 26 -22 49 22 49 8 26 13 26Z"/><path fill="#f9fcfd" d="M0 0 -12 24 0 20 12 24Z"/></g>
+    </defs>
+    <circle cx="615" cy="102" r="98" fill="url(#winter-sun)"/>
+    <circle cx="615" cy="102" r="29" fill="#f0debe" opacity=".8"/>
+    <path fill="#dae7ee" d="M80 276Q190 223 270 246L426 133Q438 121 450 133L594 243Q700 218 900 257V420H0Z"/>
+    <path fill="#f7fbfd" d="m377 178 49-45q12-12 24 0l57 55-30-10-16 13-24-19-20 15-15-13Z"/>
+    <path fill="#e5eef3" d="M0 292Q140 202 310 272T640 260Q786 204 900 230V420H0Z"/>
+    <g opacity=".85"><use href="#far-pine" transform="translate(118 248) scale(.8)"/><use href="#far-pine" transform="translate(152 232)"/><use href="#far-pine" transform="translate(184 255) scale(.65)"/><use href="#far-pine" transform="translate(742 220)"/><use href="#far-pine" transform="translate(783 210) scale(1.2)"/><use href="#far-pine" transform="translate(821 235) scale(.7)"/></g>
+    <path fill="url(#snow-hill)" d="M0 340Q151 264 340 294T688 286Q800 271 900 302V420H0Z"/>
+    <path fill="none" stroke="#dbe8ef" stroke-width="2" d="M470 420q93-50 22-77t65-41"/>
+    <g transform="translate(574 235)">
+      <path stroke="#d8e4e9" stroke-width="6" stroke-linecap="round" fill="none" d="M42-22q-12-13 2-23t-4-19" opacity=".6"/>
+      <path fill="#9a7160" d="M36-18h10v27H36Z"/>
+      <path fill="#cfb39d" d="M0 26h94v69H0Z"/>
+      <path fill="#e1cbb7" d="M60 18l34 8v69H60Z"/>
+      <path fill="#a87467" d="m-9 30 53-57 58 57-6 6-52-48-45 48Z"/>
+      <path fill="#fff" stroke="#e4edf2" d="m-11 25 54-57 61 59-8 3-53-49-45 50Z"/>
+      <rect x="14" y="48" width="23" height="27" rx="2" fill="#f9e4a8" stroke="#a98c77" stroke-width="3"/>
+      <path stroke="#b7a38b" stroke-width="2" d="M25 49v25M15 61h22"/>
+      <rect x="58" y="52" width="19" height="43" rx="2" fill="#9c8270"/>
+      <circle cx="73" cy="77" r="1.6" fill="#f6ddb3"/>
+      <path fill="#fff" d="M-8 90q22-10 43-1t70 0v11H-8Z"/>
+    </g>
+    <use href="#snow-pine" transform="translate(529 254) scale(1.03)"/>
+    <use href="#snow-pine" transform="translate(716 257) scale(1.17)"/>
+    <use href="#snow-pine" transform="translate(767 280) scale(.84)"/>
+    <use href="#snow-pine" transform="translate(847 296) scale(1.06)"/>
+    <use href="#snow-pine" transform="translate(331 302) scale(.68)"/>
+    <path fill="#f6fafc" d="M0 390Q205 334 450 376T900 357V420H0Z"/>
+    <g fill="#b5ccd6" opacity=".7"><ellipse cx="438" cy="375" rx="3" ry="1.5"/><ellipse cx="448" cy="381" rx="3" ry="1.5"/><ellipse cx="462" cy="388" rx="3" ry="1.5"/><ellipse cx="475" cy="396" rx="3" ry="1.5"/></g>
+    <g fill="#fff" opacity=".9"><circle cx="330" cy="102" r="3"/><circle cx="511" cy="79" r="2.5"/><circle cx="727" cy="126" r="3.5"/><circle cx="820" cy="174" r="2"/><circle cx="214" cy="204" r="3"/><circle cx="562" cy="176" r="2"/><circle cx="683" cy="211" r="3"/></g>
   </svg>
 </header>
-<nav><div class="in"><a href="#day1"><b>D1</b>札幌</a><a href="#day2"><b>D2</b>札幌</a><a href="#day3"><b>D3</b>钱函/小樽</a><a href="#day4"><b>D4</b>旭川/美瑛</a><a href="#day5"><b>D5</b>登别/洞爷湖</a><a href="#day6"><b>D6</b>札幌citywalk&amp;shopping&amp;回家</a></div></nav>
+<nav aria-label="每日行程"><div class="in"><a href="#day1" class="on" aria-current="location"><b>12.31</b>札幌跨年</a><a href="#day2"><b>01.01</b>札幌漫游</a><a href="#day3"><b>01.02</b>钱函 / 小樽</a><a href="#day4"><b>01.03</b>旭川 / 美瑛</a><a href="#day5"><b>01.04</b>登别 / 洞爷湖</a><a href="#day6"><b>01.05</b>购物 / 返程</a></div></nav>
 <main>
-<div class="overview"><a href="#day1"><small>DAY 1 · 12.31</small><strong>札幌</strong></a><a href="#day2"><small>DAY 2 · 1.01</small><strong>札幌</strong></a><a href="#day3"><small>DAY 3 · 1.02</small><strong>钱函/小樽</strong></a><a href="#day4"><small>DAY 4 · 1.03</small><strong>旭川/美瑛</strong></a><a href="#day5"><small>DAY 5 · 1.04</small><strong>登别/洞爷湖</strong></a><a href="#day6"><small>DAY 6 · 1.05</small><strong>札幌citywalk&amp;shopping&amp;回家</strong></a></div>
+<div class="overview"><a href="#day1"><small>DAY 1 · 12.31</small><strong>札幌</strong></a><a href="#day2"><small>DAY 2 · 1.01</small><strong>札幌</strong></a><a href="#day3"><small>DAY 3 · 1.02</small><strong>钱函/小樽</strong></a><a href="#day4"><small>DAY 4 · 1.03</small><strong>旭川/美瑛</strong></a><a href="#day5"><small>DAY 5 · 1.04</small><strong>登别/洞爷湖</strong></a><a href="#day6"><small>DAY 6 · 1.05</small><strong>札幌 · 购物与返程</strong></a></div>
 <section class="day" id="day1"><header class="day-head"><div class="day-no"><small>DAY</small>1</div><div class="day-meta"><div class="day-date">2026.12.31 · 周四</div><h1 class="day-title">札幌</h1></div></header><div class="day-body">
 <p>14:20到达新千岁机场🛬<br/>
 <em><span class="route"><span class="stop">新千岁机场</span><span class="leg"></span><span class="stop">札幌站</span></span></em>  🕙40min<br/>
@@ -371,7 +421,7 @@ footer { text-align:center; color:var(--ink-3); font-size:13px; padding:10px 0 4
 <li><strong>行李寄存</strong>：如果从札幌带行李出发，可以寄存在 JR 登别站或 JR 洞爷站的储物柜，玩完再取，不要拖着行李去坐巴士。</li>
 </ul>
 
-</div></div></section><section class="day" id="day6"><header class="day-head"><div class="day-no"><small>DAY</small>6</div><div class="day-meta"><div class="day-date">2027.1.05 · 周二</div><h1 class="day-title">札幌citywalk&amp;shopping&amp;回家</h1></div></header><div class="day-body">
+</div></div></section><section class="day" id="day6"><header class="day-head"><div class="day-no"><small>DAY</small>6</div><div class="day-meta"><div class="day-date">2027.1.05 · 周二</div><h1 class="day-title">札幌 · 漫步、购物与返程</h1></div></header><div class="day-body">
 <p>札幌商场分布：<br/>
 <a class="shot" href="img/Pasted-image-20261018015759.jpg"><img alt="" loading="lazy" src="img/Pasted-image-20261018015759.jpg" style="max-width:min(100%,520px)"/></a><br/>
 <strong>16:00前到达新千岁机场乘机回香港</strong> 🛫</p>
@@ -379,19 +429,43 @@ footer { text-align:center; color:var(--ink-3); font-size:13px; padding:10px 0 4
 </div></section>
 <footer>由 Obsidian 笔记生成 · 祝旅途愉快 ❄️</footer>
 </main>
-<div class="lb" id="lb"><img alt=""></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="查看大图" aria-hidden="true"><button class="lb-close" type="button" aria-label="关闭大图">×</button><img alt="行程图片"></div>
 <script>
-// 点击图片看大图
-const lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
-document.querySelectorAll('a.shot').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();lbImg.src=a.href;lb.classList.add('on');}));
-lb.addEventListener('click',()=>lb.classList.remove('on'));
-// 导航高亮当前日
-const links=[...document.querySelectorAll('nav a')];
-const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){
-  links.forEach(l=>l.classList.toggle('on',l.hash==='#'+en.target.id));
-  const on=links.find(l=>l.classList.contains('on')); on&&on.scrollIntoView({inline:'center',block:'nearest'});
-}}),{rootMargin:'-45% 0px -50% 0px'});
-document.querySelectorAll('section.day').forEach(s=>io.observe(s));
+const lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+let imageTrigger=null;
+function closeImage(){
+  lb.classList.remove('on');lb.setAttribute('aria-hidden','true');
+  document.body.style.overflowY='';
+  if(imageTrigger)imageTrigger.focus({preventScroll:true});
+}
+document.querySelectorAll('a.shot').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();imageTrigger=a;lbImg.src=a.href;lb.classList.add('on');
+  lb.setAttribute('aria-hidden','false');document.body.style.overflowY='hidden';
+  lb.querySelector('button').focus({preventScroll:true});
+}));
+lb.addEventListener('click',closeImage);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeImage();});
+// 只改变导航高亮，不调用 scrollIntoView，避免页面自行横滑或跳动。
+const nav=document.querySelector('nav'),links=[...nav.querySelectorAll('a')],days=[...document.querySelectorAll('section.day')];
+function highlightDay(){
+  const boundary=nav.getBoundingClientRect().height+60;
+  let active=days[0];
+  for(const day of days){if(day.getBoundingClientRect().top<=boundary)active=day;else break;}
+  links.forEach(link=>{
+    const selected=link.hash==='#'+active.id;
+    link.classList.toggle('on',selected);
+    if(selected)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
+  });
+}
+let scheduled=false;
+window.addEventListener('scroll',()=>{
+  if(scheduled)return;scheduled=true;
+  requestAnimationFrame(()=>{highlightDay();scheduled=false;});
+},{passive:true});
+new ResizeObserver(()=>{
+  document.documentElement.style.setProperty('--nav-height',nav.getBoundingClientRect().height+'px');
+  highlightDay();
+}).observe(nav);
 </script>
 </body>
 </html>
